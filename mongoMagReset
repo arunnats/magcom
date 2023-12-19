@@ -1,0 +1,15 @@
+const mongoose = require('mongoose');
+const Magazine = require('./models/magazine'); // Adjust the path as needed
+
+mongoose.connect('mongodb+srv://arunnats:DouglasAdams42@clustermagcom.chf4jce.mongodb.net/?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Remove all documents from the Magazine collection
+Magazine.deleteMany({})
+  .then(() => {
+    console.log('All magazine documents removed from the database');
+    mongoose.connection.close();
+  })
+  .catch((err) => console.error(err));
