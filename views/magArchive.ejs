@@ -114,7 +114,7 @@
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&amp;display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../public/css/styles.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
   </head>
  
   <body>
@@ -126,7 +126,7 @@
     <div class="titlebar">
       <div class="titlebarSidetext" id="date-container"> </div>
       <div>
-        <img src="../images/magcomlogo.png" alt="" class="titlebarImage">
+        <img src="/images/magcomlogo.png" alt="" class="titlebarImage">
       </div>
       <div >
         <li style="padding-bottom: 10px; list-style: none;">
@@ -134,27 +134,31 @@
           <a href=""><img src="../images/instagram.svg" alt="" class="socials"></a>
           <a href=""><img src="../images/linkedin.svg" alt="" class="socials"></a>
         </li>
-        <a href="" class="mobileHider">About us </a>
         
       </div>
 
     </div>
+    
     <div>
-      <h1 class="titlebarText">NIT CALICUT MAGAZINE</h1>
+        <h1 class="titlebarText">
+            <a href="./index">NIT CALICUT MAGAZINE</a>
+        </h1>
     </div>
     
   </header>
 
   <div class="nav-scroller py-1 mb-3 border-bottom" bis_skin_checked="1">
     <nav class="nav nav-underline justify-content-between">
-      <a class="nav-item nav-link link-body-emphasis" href="#" >Previous Magazines</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Articles</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Newsletter</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">News</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Submissions</a>
+      <a class="nav-item nav-link link-body-emphasis" href="./">Home</a>
+      <a class="nav-item nav-link link-body-emphasis" href="./magArchive" >Previous Magazines</a>
+      <a class="nav-item nav-link link-body-emphasis" href="./articles">Articles</a>
+      <a class="nav-item nav-link link-body-emphasis" href="./newsletter">Newsletter</a>
+      <a class="nav-item nav-link link-body-emphasis" href="./submissions">Submissions</a>
     </nav>
   </div>
 </div>
+
+<main>
 
 <% magazines.forEach(magazine => { %>
   <div class="container-current-mag">
@@ -185,7 +189,7 @@
       </a>
 
       <ul class="nav col-md-4 justify-content-center">
-        <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted ">Home</a></li>
+        <li class="nav-item"><a href="/index.html" class="nav-link px-2 text-muted ">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
@@ -197,6 +201,6 @@
 
 
 
-<script src="../index.js"></script>
+<script src="/scripts/datetime.js"></script>
 </body>
 </html>

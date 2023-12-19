@@ -22,14 +22,45 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+
+app.get('/', async (req, res) => {
+  try {
+    const latestMagazine = await Magazine.findOne().sort({ publicationYear: -1 });
+    res.render('index', { latestMagazine });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 app.get('/magArchive', async (req, res) => {
   try {
     const magazines = await Magazine.find();
-    res.render('archive', { magazines });
+    res.render('magArchive', { magazines });
+  } catch (error) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/articles', async (req, res) => {
+  try {
+    res.render('articles', { });
+  } catch (error) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/newsletter', async (req, res) => {
+  try {
+    res.render('newsletter', { });
+  } catch (error) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/submissions', async (req, res) => {
+  try {
+    res.render('submissions', { });
   } catch (error) {
     res.status(500).send('Internal Server Error');
   }

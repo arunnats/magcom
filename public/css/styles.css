@@ -5,7 +5,7 @@
 }
 
 .socials{
-  height: 20px;
+  height: 22px;
 }
 
 .titlebarImage{
@@ -17,7 +17,7 @@
 .titlebarText{  
     display: flex;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 68px;
     justify-content: space-evenly;
     align-items:stretch;
     color: black;
@@ -53,7 +53,7 @@
 
 .titlebarSidetext{
     font-family: 'Playfair Display', serif;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .navbarText{
