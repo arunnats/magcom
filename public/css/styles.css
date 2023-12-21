@@ -65,7 +65,8 @@
 }
 
 body{
-    background-color: #fcfbf7;
+  /*background-color: #fcfbf7;*/
+  background-color: #fbf5ec;
 }
 
 
@@ -207,6 +208,134 @@ body{
   grid-row-end: 3; /* The left region ends at the third row */
   background-color: lightblue; /* The left region has a light blue background color */
 }
+
+.container-article-archive {
+  padding-top: 20px;
+  width: 90%;
+  margin: 10px auto;
+  height: 2050px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1.5fr;
+  grid-template-rows: 0.5fr 1.5fr 1.5fr 1fr 1fr 1.5fr 1.5fr 1fr 1fr 1.5fr 1.5fr 1fr 1fr;
+  grid-gap: 10px;
+  overflow: hidden;
+  grid-template-areas: 
+    "art-title art-title art-title art-title art-title"
+    "art-5 art-5 cap-5 cap-5 art-1"
+    "art-5 art-5 cap-5 cap-5 art-1"
+    "art-6 art-6 news-ad news-ad cap-1"
+    "art-6 art-6 art-7 cap-7 cap-1"
+    "cap-6 cap-6 art-7 cap-7 art-2"
+    ". ill ill . art-2"
+    ". ill ill . cap-2"
+    "art-4 art-4 cap-4 cap-4 cap-2"
+    "art-4 art-4 cap-4 cap-4 art-3"
+    "sub sub sub sub art-3"
+    "art-8 art-8 cap-8 cap-8 cap-3"
+    "art-8 art-8 cap-8 cap-8 cap-3";
+}
+
+.art-title {
+  grid-area: art-title;
+  background-color: lightblue;
+}
+
+.art-1 {
+  grid-area: art-1;
+  background-color: lightcoral; 
+}
+
+.news-ad {
+  grid-area: news-ad;
+  background-color: #2F4858;
+}
+
+.art-1-cap {
+  grid-area: cap-1;
+  background-color: lightcoral; 
+}
+
+.art-2 {
+  grid-area: art-2;
+  background-color: lightgreen;
+}
+
+.art-2-cap {
+  grid-area: cap-2;
+  background-color: lightgreen;
+}
+
+.art-3 {
+  grid-area: art-3;
+  background-color: lightslategray;
+}
+
+.art-3-cap {
+  grid-area: cap-3;
+  background-color: lightslategray;
+}
+
+.art-4 {
+  grid-area: art-4; 
+  background-color: lightseagreen;
+}
+
+.art-4-cap {
+  grid-area: cap-4;
+  background-color: lightseagreen; 
+}
+
+.art-5 {
+  grid-area: art-5; 
+  background-color: lightgoldenrodyellow;
+}
+
+.art-5-cap {
+  grid-area: cap-5; 
+  background-color: lightgoldenrodyellow; 
+}
+
+.art-6 {
+  grid-area: art-6; 
+  background-color: lightcoral; 
+}
+
+.art-6-cap {
+  grid-area: cap-6;
+  background-color: lightcoral; 
+}
+
+.art-7 {
+  grid-area: art-7; 
+  background-color: lightgreen; 
+}
+
+.art-7-cap {
+  grid-area: cap-7;
+  background-color: lightgreen; 
+}
+
+.art-8 {
+  grid-area: art-8;
+  background-color: lightseagreen; 
+}
+
+.art-8-cap {
+  grid-area: cap-8;
+  background-color: lightseagreen; 
+}
+
+.ill {
+  grid-area: ill;
+  background-color: goldenrod;
+}
+
+.sub {
+  grid-area: sub;
+  background-color: goldenrod; 
+}
+
+
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .titlebarText {

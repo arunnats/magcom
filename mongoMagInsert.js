@@ -11,26 +11,31 @@ const Magazines = [
     name: 'Audacia',
     publicationYear: 2022,
     image: 'audacia22.jpg',
+    fileName: 'audacia22.pdf',
   },
   {
     name: 'Safar',
     publicationYear: 2021,
     image: 'safar21.jpg',
+    fileName: 'safar21.pdf',
   },
   {
     name: 'Vermodalen',
     publicationYear: 2019,
     image: 'vermodalen19.jpg',
+    fileName: 'vermodalen19.pdf',
   },
   {
     name: 'Chaipedia',
     publicationYear: 2017,
     image: 'chaipedia17.jpg',
+    fileName: 'chaipedia17.pdf',
   },
   {
     name: 'Vox Populi',
     publicationYear: 2016,
     image: 'voxpopuli16.jpg',
+    fileName: 'voxpopuli16.pdf',
   },
 ];
 
