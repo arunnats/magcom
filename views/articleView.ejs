@@ -130,9 +130,9 @@
       </div>
       <div >
         <li style="padding-bottom: 10px; list-style: none;">
-          <a href=""><img src="./images/facebook.svg" alt="" class="socials"></a>
-          <a href=""><img src="./images/instagram.svg" alt="" class="socials"></a>
-          <a href=""><img src="./images/linkedin.svg" alt="" class="socials"></a>
+          <a href=""><img src="/images/facebook.svg" alt="" class="socials"></a>
+          <a href=""><img src="/images/instagram.svg" alt="" class="socials"></a>
+          <a href=""><img src="/images/linkedin.svg" alt="" class="socials"></a>
         </li>
         
         
@@ -163,10 +163,13 @@
 <main>
 
 <body>
-    <h1><%= article.title %></h1>
-    <img src="<%= article.image %>" alt="<%= article.title %> Image">
+  <div class="article-viewer">
+    <h1 class="article-heading"><%= article.title %></h1>
     <br>
-    <%- article.content.replace(/\n\n/g, '<br>') %>
+    <img class="article-img" src="/images/articleImages/<%= article.coverImgName %>" alt="<%= article.title  %> Image">
+    <br>
+    <p class="article-text"><%- article.content.replace(/\n\n/g, '<br>') %></p>
+  </div>
 </body>
 
 </main>
@@ -180,8 +183,8 @@
     </a>
 
     <ul class="nav col-md-4 justify-content-center">
-      <li class="nav-item"><a href="./index.html" class="nav-link px-2 text-muted ">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+      <li class="nav-item"><a href="/" class="nav-link px-2 text-muted ">Home</a></li>
+      <li class="nav-item"><a href="/admin" class="nav-link px-2 text-muted">Admin</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>

@@ -1,33 +1,44 @@
-// Wait for the document to be ready
 $(document).ready(function () {
-    // Attach a submit event listener to the login form
     $('#login-form').submit(function (e) {
-        // Prevent the default form submission
         e.preventDefault();
 
-        // Get the values of username and password from the form
         const username = $('#username').val();
         const password = $('#password').val();
 
-        // Make an AJAX POST request to the server
-        $.ajax({
-            type: 'POST',
-            url: '/admin/login', // Server-side route handling login logic
-            data: { username, password }, // Send username and password to the server
-            success: function (data) {
-                // Log success message to the console
-                console.log('Success:', data);
-                
-                // Redirect to the specified URL on success
-                window.location.href = data.redirect;
-            },
-            error: function (error) {
-                // Log error message to the console
-                console.log('Error:', error);
-                
-                // Handle error response (e.g., show an alert)
-                alert('Invalid username or password. Please try again.');
-            },
-        });
+        // Call the handleAction function with the appropriate action and input data
+        handleAction('Login', { username, password });
     });
+
+    function sendPostRequest(url, data) {
+        return fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .catch(error => console.error(error));
+    }
+
+    function handleAction(action, inputData) {
+        // Adjust the URL based on your server setup
+        const apiUrl = 'http://localhost:3000/admin/login';
+        console.log(apiUrl);
+      
+        // Send a POST request with the input data
+        sendPostRequest(apiUrl, inputData)
+          .then(response => {
+            console.log('Server response:', response);
+      
+            // Check for success and redirect
+            if (response.success) {
+              window.location.href = response.redirect;
+            } else {
+              // Show an alert with the error message if the login is unsuccessful
+              alert(response.message || 'Invalid credentials. Try again.');
+            }
+          });
+      }
+      
 });

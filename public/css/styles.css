@@ -334,8 +334,31 @@ body{
   grid-area: sub;
   background-color: goldenrod; 
 }
+.article-viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%; /* Set width to 80% */
+  margin: auto; /* Center the div horizontally */
+  border: 2px solid black; /* Add a black border around the div */
+  padding: 20px; /* Add padding for better aesthetics */
+}
 
+.article-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  text-decoration: underline;
+}
 
+.article-img {
+  height: 300px;
+  width: 300px;
+}
+
+.article-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+}
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .titlebarText {

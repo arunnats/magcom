@@ -6,6 +6,8 @@ const articleSchema = new mongoose.Schema({
   publicationYear: { type: Number, required: false },
   publicationMonth: { type: String, required: false },
   publicationDate: { type: Number, required: false },
+  author: { type: String, required: false },
+  designer: { type: String, required: false },
   coverImgName: { type: String, required: true },
   content: { type: String, required: true },
 });

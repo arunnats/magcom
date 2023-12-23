@@ -164,25 +164,26 @@
 <main>
   
 
-  <div class="login-page">
+  <div class="admin-page">
     <div>
       <h1 class="dashboardText">Admin dashboard</h1>
     </div>
-    <div class="login-form-container">
+    <div class="admin-form-container">
         <div class="form">
-            <form class="login-form" id="adminSelector">
-              <button id="loginButton" type="submit">Add Magazine</button>
-              <button id="loginButton" type="submit">Remove Magazine</button>
-              <button id="loginButton" type="submit">Reset Magazines</button>
-              <button id="loginButton" type="submit">Add Article</button>
-              <button id="loginButton" type="submit">Remove Article</button>
-              <button id="loginButton" type="submit">Reset Articles</button>
-              <button id="loginButton" type="submit">Add User</button>
-              <button id="loginButton" type="submit">Remove User</button>
+            <form class="admin-form" id="adminSelector">
+              <button class="adminButton" id="adminButton" type="button">Add Magazine</button>
+              <button class="adminButton" id="adminButton" type="button">Remove Magazine</button>
+              <button class="adminButton" id="adminButton" type="button">Reset Magazines</button>
+              <button class="adminButton" id="adminButton" type="button">Add Article</button>
+              <button class="adminButton" id="adminButton" type="button">Remove Article</button>
+              <button class="adminButton" id="adminButton" type="button">Reset Articles</button>
+              <button class="adminButton" id="adminButton" type="button">Add User</button>
+              <button class="adminButton" id="adminButton" type="button">Remove User</button>
             </form>
         </div>
+        <div id="dynamicContent"></div>
     </div>
-</div>
+</div>x
 </main>
 
 <div class="container" bis_skin_checked="1">
@@ -205,7 +206,8 @@
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/scripts/adminManagement.js"></script>
 <script src="/scripts/datetime.js"></script>
 </body>
 </html>
