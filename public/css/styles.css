@@ -69,285 +69,48 @@ body{
   background-color: #fbf5ec;
 }
 
-
-.container-current-mag {
-  padding-top: 20px;
-  width: 90%; /* The div spans 80% of the page width */
-  margin: 10px auto; /* The div has 10px margins on top and bottom, and auto margins on left and right */
-  height: 300px; /* The div has a fixed height of 600px */
-  display: grid; /* The div uses a grid layout */
-  grid-template-columns: 1.5fr 1fr; /* The div has two columns of size 2/3 and 1/3 */
-  grid-template-rows: 4fr 1fr; /* The div has two rows of size 3/4 and 1/4 */
-  grid-gap: 10px; /* The div has a gap of 10px between the grid items */
-  overflow: hidden;
-}
-
-.left-col-mag {
-  grid-column: 1 / 2; /* The left region occupies the first column */
-  grid-row: 1 / 3; /* The left region occupies both rows */
-  background-color: lightblue; /* The left region has a light blue background color */
-}
-
-.right-col-top {
-  grid-column: 2 / 3; /* The right-top region occupies the second column */
-  grid-row: 1 / 2; /* The right-top region occupies the first row */
-  background-color: lightgreen; /* The right-top region has a light green background color */
-}
-
-.right-col-bottom {
-  grid-column: 2 / 3; /* The right-bottom region occupies the second column */
-  grid-row: 2 / 3; /* The right-bottom region occupies the second row */
-  background-color: lightpink; /* The right-bottom region has a light pink background color */
-}
-
-.cover-current-mag{
-  width: 100%; /* The image fills the width of the right-top region */
-  height: 100%; /* The image fills the height of the right-top region */
-  object-fit: cover; /* The image is cropped to fit the region */
-}
-
-/*.grid__item {
-  position: relative;       for the lines did not work
-
-}
-
-.grid__item::before {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 100%;
-  background-color: black;
-  top: 0;
-  left: -5px;
-}*/
-
-.container-current-articles {
-  padding-top: 20px;
-  width: 90%; /* The div spans 80% of the page width */
-  margin: 10px auto; /* The div has 10px margins on top and bottom, and auto margins on left and right */
-  height: 450px; /* The div has a fixed height of 600px */
-  display: grid; /* The div uses a gr id layout */
-  grid-template-columns: 2fr 1fr 1fr; /* The div has three columns of size 4/6, 1/6, and 1/6 */
-  grid-template-rows: 1fr 1fr; /* The div has two rows of size 2/3 and 1/3 */
-  grid-gap: 10px; /* The div has a gap of 10px between the grid items */
-  overflow: hidden;
-}
-
-.right-col-1 {
-  grid-column-start:  2; /* The right-top region starts from the second column */
-  grid-column-end: 3; /* The right-top region ends at the third column */
-  grid-row-start: 1 ; /* The right-top region starts from the first row */
-  grid-row-end: 2; /* The right-top region ends at the second row */
-  background-color: lightpink; /* The right-top region has a light pink background color */
-}
-
-.right-col-2 {
-  grid-column-start:  3; /* The right-top region starts from the third column */
-  grid-column-end: 4; /* The right-top region ends at the fourth column */
-  grid-row-start: 1 ; /* The right-top region starts from the first row */
-  grid-row-end: 2; /* The right-top region ends at the second row */
-  background-color: lightpink; /* The right-top region has a light pink background color */
-}
-
-.right-col-3 {
-  grid-column-start:  2; /* The right-bottom region starts from the second column */
-  grid-column-end: 3; /* The right-bottom region ends at the third column */
-  grid-row-start: 2 ; /* The right-bottom region starts from the second row */
-  grid-row-end: 3; /* The right-bottom region ends at the third row */
-  background-color: lightpink; /* The right-bottom region has a light pink background color */
-}
-
-.right-col-4 {
-  grid-column-start:  3; /* The right-bottom region starts from the third column */
-  grid-column-end: 4; /* The right-bottom region ends at the fourth column */
-  grid-row-start: 2 ; /* The right-bottom region starts from the second row */
-  grid-row-end: 3; /* The right-bottom region ends at the third row */
-  background-color: lightpink; /* The right-bottom region has a light pink background color */
-}
-
-.left-col-article {
-  grid-column-start:  1; /* The left region starts from the first column */
-  grid-column-end: 2; /* The left region ends at the second column */
-  grid-row-start: 1 ; /* The left region starts from the first row */
-  grid-row-end: 3; /* The left region ends at the third row */
-  background-color: lightblue; /* The left region has a light blue background color */
-}
-
-.container-current-misc {
-  padding-top: 20px;
-  width: 90%; /* The div spans 80% of the page width */
-  margin: 10px auto; /* The div has 10px margins on top and bottom, and auto margins on left and right */
-  height: 400px; /* The div has a fixed height of 600px */
-  display: grid; /* The div uses a gr id layout */
-  grid-template-columns: 2.5fr 1.5fr; /* The div has three columns of size 4/6, 1/6, and 1/6 */
-  grid-template-rows: 1.5fr 2fr; /* The div has two rows of size 2/3 and 1/3 */
-  grid-gap: 10px; /* The div has a gap of 10px between the grid items */
-  overflow: hidden;
-}
-
-.left-submissions {
-  grid-column-start:  1; /* The left region starts from the first column */
-  grid-column-end: 2; /* The left region ends at the second column */
-  grid-row-start: 1 ; /* The left region starts from the first row */
-  grid-row-end: 2; /* The left region ends at the third row */
-  background-color: lightblue; /* The left region has a light blue background color */
-}
-
-.left-about {
-  grid-column-start:  1; /* The left region starts from the first column */
-  grid-column-end: 2; /* The left region ends at the second column */
-  grid-row-start: 2 ; /* The left region starts from the first row */
-  grid-row-end: 3; /* The left region ends at the third row */
-  background-color: lightblue; /* The left region has a light blue background color */
-}
-
-.right_newsletter {
-  grid-column-start:  2; /* The left region starts from the first column */
-  grid-column-end: 3; /* The left region ends at the second column */
-  grid-row-start: 1 ; /* The left region starts from the first row */
-  grid-row-end: 3; /* The left region ends at the third row */
-  background-color: lightblue; /* The left region has a light blue background color */
-}
-
-.container-article-archive {
-  padding-top: 20px;
-  width: 90%;
-  margin: 10px auto;
-  height: 2050px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1.5fr;
-  grid-template-rows: 0.5fr 1.5fr 1.5fr 1fr 1fr 1.5fr 1.5fr 1fr 1fr 1.5fr 1.5fr 1fr 1fr;
-  grid-gap: 10px;
-  overflow: hidden;
-  grid-template-areas: 
-    "art-title art-title art-title art-title art-title"
-    "art-5 art-5 cap-5 cap-5 art-1"
-    "art-5 art-5 cap-5 cap-5 art-1"
-    "art-6 art-6 news-ad news-ad cap-1"
-    "art-6 art-6 art-7 cap-7 cap-1"
-    "cap-6 cap-6 art-7 cap-7 art-2"
-    ". ill ill . art-2"
-    ". ill ill . cap-2"
-    "art-4 art-4 cap-4 cap-4 cap-2"
-    "art-4 art-4 cap-4 cap-4 art-3"
-    "sub sub sub sub art-3"
-    "art-8 art-8 cap-8 cap-8 cap-3"
-    "art-8 art-8 cap-8 cap-8 cap-3";
-}
-
-.art-title {
-  grid-area: art-title;
+.common-button-container{
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+.common-button {
   font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  text-decoration: underline;
+  text-transform: uppercase;
+  outline: 0;
+  background: black;
+  width: 200px;
+  border: 0;
+  padding: 15px;
+  color: #fbf5ec;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-.art-1 {
-  grid-area: art-1;
-  background-color: lightcoral; 
-}
-
-.news-ad {
-  grid-area: news-ad;
-  background-color: #2F4858;
-}
-
-.art-1-cap {
-  grid-area: cap-1;
-  background-color: lightcoral; 
-}
-
-.art-2 {
-  grid-area: art-2;
-  background-color: lightgreen;
-}
-
-.art-2-cap {
-  grid-area: cap-2;
-  background-color: lightgreen;
-}
-
-.art-3 {
-  grid-area: art-3;
-  background-color: lightslategray;
-}
-
-.art-3-cap {
-  grid-area: cap-3;
-  background-color: lightslategray;
-}
-
-.art-4 {
-  grid-area: art-4; 
-  background-color: lightseagreen;
-}
-
-.art-4-cap {
-  grid-area: cap-4;
-  background-color: lightseagreen; 
-}
-
-.art-5 {
-  grid-area: art-5; 
-  background-color: lightgoldenrodyellow;
-}
-
-.art-5-cap {
-  grid-area: cap-5; 
-  border: 1px solid #2F4858;
-}
-
-.art-5-cap h5{
+.common-button-na {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: bold;
-  padding: 5px;
-  padding-bottom: 0px;
-  
+  outline: 0;
+  background: black;
+  width: 200px;
+  border: 0;
+  padding: 15px;
+  color: #fbf5ec;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
-.art-6 {
-  grid-area: art-6; 
-  background-color: lightcoral; 
+.common-button:hover,
+.common-button:active,
+.common-button:focus {
+  background: white;
+  color: #000000;
+  border: #000000;
 }
 
-.art-6-cap {
-  grid-area: cap-6;
-  background-color: lightcoral; 
-}
-
-.art-7 {
-  grid-area: art-7; 
-  background-color: lightgreen; 
-}
-
-.art-7-cap {
-  grid-area: cap-7;
-  background-color: lightgreen; 
-}
-
-.art-8 {
-  grid-area: art-8;
-  background-color: lightseagreen; 
-}
-
-.art-8-cap {
-  grid-area: cap-8;
-  background-color: lightseagreen; 
-}
-
-.ill {
-  grid-area: ill;
-  background-color: goldenrod;
-}
-
-.sub {
-  grid-area: sub;
-  background-color: goldenrod; 
-}
 .article-viewer {
   display: flex;
   flex-direction: column;
@@ -371,15 +134,39 @@ body{
 
 .subheading-style{
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
+  font-size: 24px;
+  text-decoration: underline;
   font-weight: bold;
 }
 
 .article-text {
   padding: 5px;
   font-family: 'Playfair Display', serif;
-  font-size: 15px;
+  font-size: 17px;
   text-align: justify;
+}
+
+.article-all-container {
+  display: flex;
+  border: 1px solid #2F4858;
+  justify-content: space-between; /* Distribute space between elements */
+  align-items: center;
+  margin-bottom: 10px; /* Add margin to create a gap between containers */
+  width: 90%;
+  margin: auto;
+}
+
+.article-all-container img {
+  height: 100px;
+  padding: 10px;
+}
+
+.article-all-container h2 {
+  flex-grow: 1; /* Allow title to grow and take available space */
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

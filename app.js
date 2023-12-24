@@ -61,6 +61,15 @@ app.get('/articles', async (req, res) => {
   }
 });
 
+app.get('/articles/more', async (req, res) => {
+  try {
+    const articles = await Article.find().sort({ indexNumber: -1 });
+    res.render('articleAll', {articles});
+  } catch (error) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 app.get('/newsletter', async (req, res) => {
   try {
     res.render('newsletter', { });

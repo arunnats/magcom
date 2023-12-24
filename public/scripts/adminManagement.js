@@ -98,7 +98,7 @@ $(document).ready(function () {
       console.log('Input Data:', inputData);
 
       if (inputData.content) {
-        inputData.content = inputData.content.replace(/\n/g, '\n\n');
+        inputData.content = inputData.content.replace(/\n\n/g, '|||');
     }
       // Adjust the URL based on your server setup
       const apiUrl = 'http://localhost:3000/admin/dashboard/' + action.toLowerCase().replace(/\s/g, '');

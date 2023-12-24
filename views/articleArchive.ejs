@@ -115,6 +115,7 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&amp;display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/articlegrid.css" rel="stylesheet">
   </head>
  
   <body>
@@ -165,80 +166,216 @@
     <div class="art-title">
       <h1>↞Previous Articles↠</h1>
     </div>
+
     <div class="art-1">
+      <div  class="art-1-img">
+        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+      </div>
       
-    </div>
-    <div class="art-1-cap">
-      
+      <div class="art-1-cap">
+        <% const contentWithSubheadings1 = articles[0].content.substring(0, 505) %>
+        <p>
+          <% contentWithSubheadings1.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+            <% if (section.startsWith('## ')) { %>
+              <span><%= section.substring(3) %></span><br> 
+            <% } else { %>
+              <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+            <% } %>
+          <% }); %>
+          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        </p>
+      </div>
     </div>
     
-    <div  class="art-2">
-  
-    </div>
-    <div  class="art-2-cap">
-  
-    </div>
-    <div  class="art-3">
-  
-    </div>
-    <div  class="art-3-cap">
-  
-    </div>
-    <div  class="art-4">
-  
-    </div>
-    <div  class="art-4-cap">
-  
-    </div>
-    <div class="news-ad">
-  
-    </div>
-    <div class="ill">
-  
-    </div>
-    <div class="sub">
-  
-    </div>
-    <div  class="art-5">
+    <div class="art-2">
+      <div  class="art-2-img">
+        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+      </div>
       
+      <div class="art-2-cap">
+        <% const contentWithSubheadings2 = articles[0].content.substring(0, 505) %>
+        <p>
+          <% contentWithSubheadings2.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+            <% if (section.startsWith('## ')) { %>
+              <span><%= section.substring(3) %></span><br> 
+            <% } else { %>
+              <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+            <% } %>
+          <% }); %>
+          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        </p>
+      </div>
     </div>
-    <div  class="art-5-cap">
-      <h5><%= articles[2].title %></h5>
-      <% const contentWithSubheadings = articles[2].content.substring(0, 850) %>
-<p class="article-text">
-  <% contentWithSubheadings.split(/\n\n\n\n/).forEach(section => { %>
-    <% if (section.startsWith('## ')) { %>
-      <span class="subheading-style"><%= section.substring(3) %></span><br>
-    <% } else { %>
-      <%= section.replace(/\n\n/g, '<br>') %><br>
-    <% } %>
-  <% }); %>
-</p>
 
-</p>
+    <div class="art-3">
+      <div  class="art-3-img">
+        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+      </div>
+      
+      <div class="art-3-cap">
+        <% const contentWithSubheadings3 = articles[0].content.substring(0, 505) %>
+        <p>
+          <% contentWithSubheadings3.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+            <% if (section.startsWith('## ')) { %>
+              <span><%= section.substring(3) %></span><br> 
+            <% } else { %>
+              <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+            <% } %>
+          <% }); %>
+          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        </p>
+      </div>
+    </div>
 
-</p>
+    <div class="art-4">
+      <div  class="art-4-img">
+        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+      </div>
+      <div class="art-4-cap">
+        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+        <% const contentWithSubheadings4 = articles[0].content.substring(0, 730) %>
+        <p>
+          <% contentWithSubheadings4.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+            <% if (section.startsWith('## ')) { %>
+              <span><%= section.substring(3) %></span><br> 
+            <% } else { %>
+              <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+            <% } %>
+          <% }); %>
+          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        </p>
+      </div>
     </div>
-    <div  class="art-6">
-  
+
+    <div class="art-5">
+    <div  class="art-5-img">
+      <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
     </div>
-    <div  class="art-6-cap">
-  
-    </div>
-    <div  class="art-7">
-  
-    </div>
-    <div  class="art-7-cap">
-  
-    </div>
-    <div  class="art-8">
-  
-    </div>
-    <div  class="art-8-cap">
-  
+    <div class="art-5-cap">
+      <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+      <% const contentWithSubheadings5 = articles[0].content.substring(0, 800) %>
+      <p>
+        <% contentWithSubheadings5.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+          <% if (section.startsWith('## ')) { %>
+            <span><%= section.substring(3) %></span><br> 
+          <% } else { %>
+            <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+          <% } %>
+        <% }); %>
+        <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+      </p>
     </div>
   </div>
-</main>
+    
+    <div class="art-6">
+      <div  class="art-6-img">
+        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+      </div>
+      
+      <div class="art-6-cap">
+        <% const contentWithSubheadings6 = articles[0].content.substring(0, 780) %>
+        <p>
+          <% contentWithSubheadings6.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+            <% if (section.startsWith('## ')) { %>
+              <span><%= section.substring(3) %></span><br> 
+            <% } else { %>
+              <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+            <% } %>
+          <% }); %>
+          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="art-7">
+      <div  class="art-7-img">
+        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+      </div>
+      
+      <div class="art-7-cap">
+        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+        <% const contentWithSubheadings7 = articles[0].content.substring(0, 505) %>
+        <p>
+          <% contentWithSubheadings7.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+            <% if (section.startsWith('## ')) { %>
+              <span><%= section.substring(3) %></span><br> 
+            <% } else { %>
+              <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+            <% } %>
+          <% }); %>
+          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="art-8">
+      <div  class="art-8-img">
+        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+      </div>
+      <div class="art-8-cap">
+        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+        <% const contentWithSubheadings8 = articles[0].content.substring(0, 580) %>
+        <p>
+          <% contentWithSubheadings8.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+            <% if (section.startsWith('## ')) { %>
+              <span><%= section.substring(3) %></span><br> 
+            <% } else { %>
+              <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+            <% } %>
+          <% }); %>
+          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="art-9">
+      <div  class="art-9-img">
+        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+      </div>
+      <div class="art-9-cap">
+        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+        <% const contentWithSubheadings9 = articles[0].content.substring(0, 500) %>
+        <p>
+          <% contentWithSubheadings9.split(/\n\n\n\n/).forEach((section, index, array) => { %>
+            <% if (section.startsWith('## ')) { %>
+              <span><%= section.substring(3) %></span><br> 
+            <% } else { %>
+              <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
+            <% } %>
+          <% }); %>
+          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="news">
+      <a href="/newsletter">
+        <div >
+          <h3>Under The Umbrella</h3>
+          <p>Join our monthly newsletter!</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="sub">
+      <a href="/submissions">
+        <div >
+          <h3>Contribute to the Magazine!</h3>
+          <p>Send in your articles, poems, stories and art!</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="common-button-container">
+    <a href="/articles/more" ><button class=" common-button-na">Older</button></a>
+  </div>
+</main>   
 
 <div class="container" bis_skin_checked="1">
   <footer class="d-flex flex-wrap justify-content-between align-items-center pt-3 mt-4 border-top ">
@@ -257,6 +394,8 @@
     </ul>
   </footer>
 </div>  
+
+
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 

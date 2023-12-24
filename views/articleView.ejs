@@ -163,21 +163,25 @@
 <main>
 
 <body>
-  <div class="article-viewer">
-    <h1 class="article-heading"><%= article.title %></h1>
-    <br>
-    <img class="article-img" src="/images/articleImages/<%= article.coverImgName %>" alt="<%= article.title  %> Image">
-    <br>
-    <% const contentWithSubheadings = article.content %>
-    <p class="article-text">
-      <% contentWithSubheadings.split(/\n\n\n\n/).forEach(section => { %>
-        <% if (section.startsWith('## ')) { %>
-          <span class="subheading-style"><%= section.substring(3) %></span><br>
-        <% } else { %>
-          <%= section.replace(/\n\n/g, '<br>') %><br>
-        <% } %>
-      <% }); %>
-  </div>
+  <!-- Assuming article.content contains the stored content -->
+
+<div class="article-viewer">
+  <h1 class="article-heading"><%= article.title %></h1>
+  <br>
+  <img class="article-img" src="/images/articleImages/<%= article.coverImgName %>" alt="<%= article.title  %> Image">
+  <br>
+  <% const contentWithSubheadings = article.content %>
+  <p class="article-text">
+    <% contentWithSubheadings.split(/\n\n\n\n/).forEach(section => { %>
+      <% if (section.startsWith('## ')) { %>
+        <span class="subheading-style"><%= section.substring(3) %></span><br><br>
+      <% } else { %>
+        <%= section.replace(/\n\n/g, '') %><br><br>
+      <% } %>
+    <% }); %>
+  </p>
+</div>
+
 </body>
 
 </main>
