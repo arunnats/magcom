@@ -54,7 +54,8 @@ app.get('/magArchive', async (req, res) => {
 
 app.get('/articles', async (req, res) => {
   try {
-    res.render('articles', { });
+    const articles = await Article.find().sort({ indexNumber: -1 });
+    res.render('articleArchive', {articles});
   } catch (error) {
     res.status(500).send('Internal Server Error');
   }

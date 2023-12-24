@@ -163,13 +163,13 @@
 <main>
   <div class="container-article-archive">
     <div class="art-title">
-    
+      <h1>↞Previous Articles↠</h1>
     </div>
     <div class="art-1">
-  
+      
     </div>
     <div class="art-1-cap">
-  
+      
     </div>
     
     <div  class="art-2">
@@ -200,10 +200,24 @@
   
     </div>
     <div  class="art-5">
-  
+      
     </div>
     <div  class="art-5-cap">
-  
+      <h5><%= articles[2].title %></h5>
+      <% const contentWithSubheadings = articles[2].content.substring(0, 850) %>
+<p class="article-text">
+  <% contentWithSubheadings.split(/\n\n\n\n/).forEach(section => { %>
+    <% if (section.startsWith('## ')) { %>
+      <span class="subheading-style"><%= section.substring(3) %></span><br>
+    <% } else { %>
+      <%= section.replace(/\n\n/g, '<br>') %><br>
+    <% } %>
+  <% }); %>
+</p>
+
+</p>
+
+</p>
     </div>
     <div  class="art-6">
   

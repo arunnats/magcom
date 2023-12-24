@@ -237,7 +237,12 @@ body{
 
 .art-title {
   grid-area: art-title;
-  background-color: lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  text-decoration: underline;
 }
 
 .art-1 {
@@ -292,7 +297,16 @@ body{
 
 .art-5-cap {
   grid-area: cap-5; 
-  background-color: lightgoldenrodyellow; 
+  border: 1px solid #2F4858;
+}
+
+.art-5-cap h5{
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 5px;
+  padding-bottom: 0px;
+  
 }
 
 .art-6 {
@@ -355,9 +369,17 @@ body{
   width: 300px;
 }
 
-.article-text {
+.subheading-style{
   font-family: 'Playfair Display', serif;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.article-text {
+  padding: 5px;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  text-align: justify;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

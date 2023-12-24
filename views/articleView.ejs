@@ -168,7 +168,15 @@
     <br>
     <img class="article-img" src="/images/articleImages/<%= article.coverImgName %>" alt="<%= article.title  %> Image">
     <br>
-    <p class="article-text"><%- article.content.replace(/\n\n/g, '<br>') %></p>
+    <% const contentWithSubheadings = article.content %>
+    <p class="article-text">
+      <% contentWithSubheadings.split(/\n\n\n\n/).forEach(section => { %>
+        <% if (section.startsWith('## ')) { %>
+          <span class="subheading-style"><%= section.substring(3) %></span><br>
+        <% } else { %>
+          <%= section.replace(/\n\n/g, '<br>') %><br>
+        <% } %>
+      <% }); %>
   </div>
 </body>
 

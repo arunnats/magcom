@@ -39,12 +39,13 @@ async function addMagazine(data) {
   
       console.log('Adding Article:', data);
   
-      // Create a new article instance
-      const article = new Article(data);
-  
-      // Save the article to the database
+      const highestIndexArticle = await Article.findOne({}, {}, { sort: { indexNumber: -1 } });
+      console.log(highestIndexArticle.indexNumber);
+      const newIndex = highestIndexArticle ? highestIndexArticle.indexNumber + 1 : 0;
+      const articleDataWithIndex = { ...data, indexNumber: newIndex };
+      const article = new Article(articleDataWithIndex);
+
       await article.save();
-  
       console.log('Article added to the database');
     } catch (err) {
       // Log the error if there's an issue
