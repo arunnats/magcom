@@ -3,11 +3,17 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const { Storage } = require('@google-cloud/storage');
+const multer = require('multer');
+const bodyParser = require('body-parser');
 const Magazine = require('./models/magazine');
 const Article = require('./models/article');
 const User = require('./models/user');
-const bodyParser = require('body-parser');
-const DatabaseFunctions = require('./public/scripts/databaseFunctions.js'); // Adjust the path as needed
+const DatabaseFunctions = require('./public/scripts/databaseFunctions.js');
+const config = require('./config.json');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,8 +23,38 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(bodyParser.json());
 
+// Configure Express sessions
+app.use(session({
+  secret: config.secretKey,
+  resave: false,
+  saveUninitialized: false,
+}));
 
-const dbUrl = 'mongodb+srv://arunnats:DouglasAdams42@clustermagcom.chf4jce.mongodb.net/?retryWrites=true&w=majority'; // Replace with your MongoDB connection string
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+const storage = multer.memoryStorage();
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith('image/') || file.mimetype === 'application/pdf') {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only images and PDFs are allowed.'));
+    }
+  },
+});
+
+const uploadFilesMiddleware = upload.fields([
+  { name: 'image', maxCount: 1 },
+  { name: 'pdfFile', maxCount: 1 }
+]);
+
+const dbUrl = config.dbURL;
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -30,6 +66,13 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
+
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/admin/login');
+}
 
 
 app.get('/', async (req, res) => {
@@ -78,7 +121,7 @@ app.get('/newsletter', async (req, res) => {
   }
 });
 
-app.get('/admin', async (req, res) => {
+app.get('/admin/login', async (req, res) => {
   try {
     res.render('admin', {});
   } catch (error) {
@@ -86,7 +129,7 @@ app.get('/admin', async (req, res) => {
   }
 });
 
-app.get('/admin/dashboard', async (req, res) => {
+app.get('/admin/dashboard', isAuthenticated, async (req, res) => {
   try {
     res.render('adminDashboard', {});
   } catch (error) {
@@ -96,23 +139,21 @@ app.get('/admin/dashboard', async (req, res) => {
 
 // POST REQUESTS
 
-app.post('/admin/dashboard/test', async (req, res) => {
-  
-  const data = req.body; // Assuming the data is sent in the request body
+app.get('/admin/dashboard/test', async (req, res) => {
   try {
-    console.log(data);
-    console.log("cleared 4");
-    res.json({ success: true, message: 'test success' });
+    res.render('adminDashboard', {});
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Internal Server Error' });
+    res.status(500).send('Internal Server Error');
   }
 });
 
-app.post('/admin/dashboard/addmagazine', async (req, res) => { 
+app.post('/admin/dashboard/addmagazine', uploadFilesMiddleware, async (req, res) => {
   const data = req.body;
+  const imageFile = req.files['image'][0];
+  const pdfFile = req.files['pdfFile'][0];
+
   try {
-    await DatabaseFunctions.addMagazine(data);
+    await DatabaseFunctions.addMagazine(data, imageFile, pdfFile);
     res.json({ success: true, message: 'Magazine added successfully' });
   } catch (error) {
     console.error(error);
@@ -199,33 +240,10 @@ app.post('/admin/dashboard/removeuser', async (req, res) => {
     }
 });
 
-
-app.post('/admin/login', async (req, res) => {
-  const { username, password } = req.body;
-  console.log(req.body);
-
-  try {
-    const user = await User.findOne({ username });
-
-    if (user) {
-      console.log("User found");
-      const isPasswordValid = await bcrypt.compare(password, user.hashedPassword);
-      if (isPasswordValid) {
-        res.json({ success: true, redirect: '/admin/dashboard' });
-      } else {
-        res.json({ success: false, message: "Invalid Password! Try again" });
-      }
-    } else {
-      console.log("User not found");
-      res.json({ success: false, message: "User not found. Try again" });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Internal Server Error' });
-  }
+app.post('/admin/login', passport.authenticate('local'), (req, res) => {
+  console.log('User authenticated:', req.user);
+  res.json({ success: true, redirect: '/admin/dashboard' });
 });
-
-
 
 
 app.get('/submissions', async (req, res) => {

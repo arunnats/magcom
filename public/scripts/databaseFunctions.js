@@ -1,34 +1,81 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const passport = require('passport');
 const Magazine = require('../../models/magazine');
 const Article = require('../../models/article')
 const User = require('../../models/user')
+const multer = require('multer');
+const { Storage } = require('@google-cloud/storage');
+const config = require('../../config.json');
 
-const dbUrl = 'mongodb+srv://arunnats:DouglasAdams42@clustermagcom.chf4jce.mongodb.net/?retryWrites=true&w=majority';
+const dbUrl = config.dbURL;
 
-async function addMagazine(data) {
-    try {
-      // Connect to MongoDB
-      await mongoose.connect(dbUrl, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+const storage = new Storage({
+  projectId: 'minutes-maker-410913',
+  keyFilename: './minutes-maker-410913-8184e634cdc3.json',
+});
 
-      console.log('Adding Magazine:', data);
+const bucket = storage.bucket('magcom');
+const multerStorage = multer.memoryStorage();
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith('image/') || file.mimetype === 'application/pdf') {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only images and PDFs are allowed.'));
+    }
+  },
+});
 
-      const magazine = new Magazine(data);
-  
-      // Save the magazine to the database
-      await magazine.save();
-  
-      console.log('Magazine added to the database');
-    } catch (err) {
-      // Log the error if there's an issue
-      console.error(err);
-      // Rethrow the error to propagate it to the calling function
-      throw err;
-    } 
+const uploadFilesMiddleware = upload.fields([
+  { name: 'image', maxCount: 1 },
+  { name: 'pdfFile', maxCount: 1 }
+]);
+
+async function addMagazine(data, imageFile, pdfFile) {
+  try {
+    await mongoose.connect(dbUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log('Adding Magazine:', data);
+
+    const imageFileName = `magazines/covers/${Date.now()}-${imageFile.originalname}`;
+    const pdfFileName = `magazines/pdfs/${Date.now()}-${pdfFile.originalname}`;
+
+    const imageUploadStream = bucket.file(imageFileName).createWriteStream();
+    imageUploadStream.end(imageFile.buffer);
+
+    const pdfUploadStream = bucket.file(pdfFileName).createWriteStream();
+    pdfUploadStream.end(pdfFile.buffer);
+
+    await Promise.all([
+      new Promise((resolve, reject) => {
+        imageUploadStream.on('finish', resolve);
+        imageUploadStream.on('error', reject);
+      }),
+      new Promise((resolve, reject) => {
+        pdfUploadStream.on('finish', resolve);
+        pdfUploadStream.on('error', reject);
+      }),
+    ]);
+
+    const imageUrl = `https://storage.googleapis.com/${bucket.name}/${imageFileName}`;
+    const pdfUrl = `https://storage.googleapis.com/${bucket.name}/${pdfFileName}`;
+
+    const magazine = new Magazine({ ...data, imageUrl, pdfUrl });
+
+    await magazine.save();
+
+    console.log('Magazine added to the database');
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
+}
+
+
   async function addArticle(data) {
     try {
       // Connect to MongoDB
@@ -152,28 +199,10 @@ async function addMagazine(data) {
   
   async function addUser(data) {
     try {
-      // Connect to MongoDB
-      await mongoose.connect(dbUrl, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-  
-      console.log('Adding User:', data);
-
-      const hashedPassword = await bcrypt.hash(data.password, 10);
-
-      const user = new User({
-        username: data.username,
-        hashedPassword: hashedPassword,
-      });
-
-      await user.save();
-  
+      await User.register(new User({ username: data.username }), data.password);
       console.log('User added to the database');
     } catch (err) {
-      // Log the error if there's an issue
       console.error(err);
-      // Rethrow the error to propagate it to the calling function
       throw err;
     }
   }

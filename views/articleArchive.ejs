@@ -169,12 +169,12 @@
 
     <div class="art-1">
       <div  class="art-1-img">
-        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
-        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+        <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
+        <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
       </div>
       
       <div class="art-1-cap">
-        <% const contentWithSubheadings1 = articles[0].content.substring(0, 505) %>
+        <% const contentWithSubheadings1 = articles[1].content.substring(0, 505) %>
         <p>
           <% contentWithSubheadings1.split(/\n\n\n\n/).forEach((section, index, array) => { %>
             <% if (section.startsWith('## ')) { %>
@@ -183,19 +183,19 @@
               <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
             <% } %>
           <% }); %>
-          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+          <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
         </p>
       </div>
     </div>
     
     <div class="art-2">
       <div  class="art-2-img">
-        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
-        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+        <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
+        <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
       </div>
       
       <div class="art-2-cap">
-        <% const contentWithSubheadings2 = articles[0].content.substring(0, 505) %>
+        <% const contentWithSubheadings2 = articles[1].content.substring(0, 505) %>
         <p>
           <% contentWithSubheadings2.split(/\n\n\n\n/).forEach((section, index, array) => { %>
             <% if (section.startsWith('## ')) { %>
@@ -204,19 +204,19 @@
               <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
             <% } %>
           <% }); %>
-          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+          <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
         </p>
       </div>
     </div>
 
     <div class="art-3">
       <div  class="art-3-img">
-        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
-        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+        <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
+        <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
       </div>
       
       <div class="art-3-cap">
-        <% const contentWithSubheadings3 = articles[0].content.substring(0, 505) %>
+        <% const contentWithSubheadings3 = articles[1].content.substring(0, 505) %>
         <p>
           <% contentWithSubheadings3.split(/\n\n\n\n/).forEach((section, index, array) => { %>
             <% if (section.startsWith('## ')) { %>
@@ -225,18 +225,18 @@
               <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
             <% } %>
           <% }); %>
-          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+          <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
         </p>
       </div>
     </div>
 
     <div class="art-4">
       <div  class="art-4-img">
-        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+        <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
       </div>
       <div class="art-4-cap">
-        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
-        <% const contentWithSubheadings4 = articles[0].content.substring(0, 730) %>
+        <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
+        <% const contentWithSubheadings4 = articles[1].content.substring(0, 730) %>
         <p>
           <% contentWithSubheadings4.split(/\n\n\n\n/).forEach((section, index, array) => { %>
             <% if (section.startsWith('## ')) { %>
@@ -245,18 +245,18 @@
               <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
             <% } %>
           <% }); %>
-          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+          <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
         </p>
       </div>
     </div>
 
     <div class="art-5">
     <div  class="art-5-img">
-      <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+      <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
     </div>
     <div class="art-5-cap">
-      <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
-      <% const contentWithSubheadings5 = articles[0].content.substring(0, 800) %>
+      <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
+      <% const contentWithSubheadings5 = articles[1].content.substring(0, 800) %>
       <p>
         <% contentWithSubheadings5.split(/\n\n\n\n/).forEach((section, index, array) => { %>
           <% if (section.startsWith('## ')) { %>
@@ -265,19 +265,19 @@
             <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
           <% } %>
         <% }); %>
-        <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+        <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
       </p>
     </div>
   </div>
     
     <div class="art-6">
       <div  class="art-6-img">
-        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
-        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
+        <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
+        <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
       </div>
       
       <div class="art-6-cap">
-        <% const contentWithSubheadings6 = articles[0].content.substring(0, 780) %>
+        <% const contentWithSubheadings6 = articles[1].content.substring(0, 780) %>
         <p>
           <% contentWithSubheadings6.split(/\n\n\n\n/).forEach((section, index, array) => { %>
             <% if (section.startsWith('## ')) { %>
@@ -286,19 +286,19 @@
               <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
             <% } %>
           <% }); %>
-          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+          <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
         </p>
       </div>
     </div>
 
     <div class="art-7">
       <div  class="art-7-img">
-        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+        <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
       </div>
       
       <div class="art-7-cap">
-        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
-        <% const contentWithSubheadings7 = articles[0].content.substring(0, 505) %>
+        <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
+        <% const contentWithSubheadings7 = articles[1].content.substring(0, 505) %>
         <p>
           <% contentWithSubheadings7.split(/\n\n\n\n/).forEach((section, index, array) => { %>
             <% if (section.startsWith('## ')) { %>
@@ -307,18 +307,18 @@
               <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
             <% } %>
           <% }); %>
-          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+          <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
         </p>
       </div>
     </div>
     
     <div class="art-8">
       <div  class="art-8-img">
-        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+        <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
       </div>
       <div class="art-8-cap">
-        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
-        <% const contentWithSubheadings8 = articles[0].content.substring(0, 580) %>
+        <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
+        <% const contentWithSubheadings8 = articles[1].content.substring(0, 580) %>
         <p>
           <% contentWithSubheadings8.split(/\n\n\n\n/).forEach((section, index, array) => { %>
             <% if (section.startsWith('## ')) { %>
@@ -327,18 +327,18 @@
               <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
             <% } %>
           <% }); %>
-          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+          <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
         </p>
       </div>
     </div>
 
     <div class="art-9">
       <div  class="art-9-img">
-        <img src="/images/articleImages/<%= articles[0].coverImgName %>" alt="">
+        <img src="/images/articleImages/<%= articles[1].coverImgName %>" alt="">
       </div>
       <div class="art-9-cap">
-        <a href="/open-article/<%= articles[0].articleID %>"><h5><%= articles[0].title %></h5></a>
-        <% const contentWithSubheadings9 = articles[0].content.substring(0, 500) %>
+        <a href="/open-article/<%= articles[1].articleID %>"><h5><%= articles[1].title %></h5></a>
+        <% const contentWithSubheadings9 = articles[1].content.substring(0, 500) %>
         <p>
           <% contentWithSubheadings9.split(/\n\n\n\n/).forEach((section, index, array) => { %>
             <% if (section.startsWith('## ')) { %>
@@ -347,7 +347,7 @@
               <%= section.replace(/\n\n/g, '<br>') %><%= index === array.length - 1 ? '' : '\n\n' %>
             <% } %>
           <% }); %>
-          <a href="/open-article/<%= articles[0].articleID %>">....continue reading</a>
+          <a href="/open-article/<%= articles[1].articleID %>">....continue reading</a>
         </p>
       </div>
     </div>
