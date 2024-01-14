@@ -9,7 +9,7 @@ const articleSchema = new mongoose.Schema({
   publicationDate: { type: Number, required: false },
   author: { type: String, required: false },
   designer: { type: String, required: false },
-  coverImgName: { type: String, required: true },
+  imageUrl: { type: String, required: true },
   content: { type: String, required: true },
 });
 

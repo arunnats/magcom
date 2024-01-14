@@ -161,11 +161,11 @@ app.post('/admin/dashboard/addmagazine', uploadFilesMiddleware, async (req, res)
   }
 });
 
-app.post('/admin/dashboard/addarticle', async (req, res) => {
-  const data = req.body; // Assuming the data is sent in the request body
+app.post('/admin/dashboard/addarticle', uploadFilesMiddleware,  async (req, res) => {
+  const data = req.body; 
+  const imageFile = req.files['image'][0];
     try {
-        await DatabaseFunctions.addArticle(data);
-        console.log("cleared 4")
+        await DatabaseFunctions.addArticle(data, imageFile);
         res.json({ success: true, message: 'Magazine added successfully' });
     } catch (error) {
         console.error(error);
@@ -173,8 +173,21 @@ app.post('/admin/dashboard/addarticle', async (req, res) => {
     }
 });
 
-app.post('/admin/dashboard/removemagazine', async (req, res) => {
-  const data = req.body; // Assuming the data is sent in the request body
+app.post('/admin/dashboard/addsacnews', uploadFilesMiddleware, async (req, res) => {
+  const data = req.body; 
+  const pdfFile = req.files['pdfFile'][0];;
+    try {
+        await DatabaseFunctions.addSACNews(data, pdfFile);
+        res.json({ success: true, message: 'SAC News added successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+});
+
+
+app.post('/admin/dashboard/removemagazine', uploadFilesMiddleware, async (req, res) => {
+  const data = req.body; 
     try {
 
         await DatabaseFunctions.removeMagazine(data);
@@ -185,8 +198,8 @@ app.post('/admin/dashboard/removemagazine', async (req, res) => {
     }
 });
 
-app.post('/admin/dashboard/removearticle', async (req, res) => {
-  const data = req.body; // Assuming the data is sent in the request body
+app.post('/admin/dashboard/removearticle', uploadFilesMiddleware, async (req, res) => {
+  const data = req.body;
     try {
 
         await DatabaseFunctions.removeArticle(data);
@@ -197,7 +210,19 @@ app.post('/admin/dashboard/removearticle', async (req, res) => {
     }
 });
 
-app.post('/admin/dashboard/resetmagazines', async (req, res) => {
+app.post('/admin/dashboard/removeSacNews', uploadFilesMiddleware, async (req, res) => {
+  const data = req.body;
+    try {
+
+        await DatabaseFunctions.removeSACNews(data);
+        res.json({ success: true, message: 'SacNews added successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+});
+
+app.post('/admin/dashboard/resetmagazines', uploadFilesMiddleware,  async (req, res) => {
   try {
     await DatabaseFunctions.resetMagazines();
     res.json({ success: true, message: 'Magazines reset successfully' });
@@ -207,7 +232,7 @@ app.post('/admin/dashboard/resetmagazines', async (req, res) => {
   }
 });
 
-app.post('/admin/dashboard/resetarticles', async (req, res) => {
+app.post('/admin/dashboard/resetarticles', uploadFilesMiddleware, async (req, res) => {
   try {
     await DatabaseFunctions.resetArticles();  
     res.json({ success: true, message: 'Articles reset successfully' });
@@ -217,23 +242,34 @@ app.post('/admin/dashboard/resetarticles', async (req, res) => {
   }
 });
 
-app.post('/admin/dashboard/adduser', async (req, res) => {
-  const data = req.body; // Assuming the data is sent in the request body
+app.post('/admin/dashboard/resetsacnews', uploadFilesMiddleware, async (req, res) => {
+  try {
+    await DatabaseFunctions.resetSACNews();  
+    res.json({ success: true, message: 'Sac news reset successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+});
+
+app.post('/admin/dashboard/adduser', uploadFilesMiddleware, async (req, res) => {
+  const data = req.body;
+  console.log(data);
     try {
         await DatabaseFunctions.addUser(data);
-        res.json({ success: true, message: 'Magazine added successfully' });
+        res.json({ success: true, message: 'User added successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
 });
 
-app.post('/admin/dashboard/removeuser', async (req, res) => {
-  const data = req.body; // Assuming the data is sent in the request body
+app.post('/admin/dashboard/removeuser', uploadFilesMiddleware, async (req, res) => {
+  const data = req.body;
     try {
 
         await DatabaseFunctions.removeUser(data);
-        res.json({ success: true, message: 'Magazine added successfully' });
+        res.json({ success: true, message: 'User removed successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: 'Internal Server Error' });
