@@ -148,7 +148,7 @@ body{
 
 .article-all-container {
   display: flex;
-  border: 1px solid #2F4858;
+  border: 1px solid #000000;
   justify-content: space-between; /* Distribute space between elements */
   align-items: center;
   margin-bottom: 10px; /* Add margin to create a gap between containers */
@@ -185,7 +185,76 @@ body{
   }
 }
 
-/* Media query for phones */
+.content-container{
+  display: flex   ;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  margin: auto;
+  font-family: 'Playfair Display', serif;
+  }
+
+
+.blog-cards-container{
+width: 90%;
+margin: auto;
+display: flex;
+}
+
+.blog-cards-container {
+width: 100%;
+margin: auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+}
+
+.blog-cards {
+height: 350px;
+width: 300px;
+border-radius: 5px;
+border: 2px solid #000000;
+margin: 10px; 
+padding: 10px;
+display: grid;
+grid-template-rows: 60% 40%;
+}
+
+.blog-cards img {
+width: 100%;
+height: 100%;
+margin-bottom: 10px;
+object-fit: cover; 
+border-radius: 5px 0 0 5px; 
+overflow: hidden;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  white-space: normal; 
+  padding-top: 10px;
+  }
+  
+  .card-content h6{
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  color: #000000;
+  font-family: 'Playfair Display', serif;
+  }
+  
+  .card-content button{
+  margin-top: auto;
+  font-family: 'Playfair Display', serif;
+  }
+
 @media (max-width: 767px) {
   .titlebarText {
       font-size: 30px;
